@@ -1,0 +1,18 @@
+﻿
+CREATE TABLE AKCH.ZTN_DEPARTMENT_INVES
+(
+  DEPARTMENT_ID     NUMBER(10),
+  LAB_ID            NUMBER(10)                  NOT NULL,
+  INVESTIGATION_ID  NUMBER(10),
+  SRATE             NUMBER(10,2)                DEFAULT 1,
+  ROOM_NAME         VARCHAR2(20 CHAR)           NOT NULL,
+  IS_ACTIVE         NUMBER(1)                   DEFAULT 1,
+  CREATE_DATE       DATE                        DEFAULT SYSDATE,
+  CREATE_USER       VARCHAR2(15 CHAR),
+  CREATE_DEVICE     VARCHAR2(50 CHAR),
+  UPDATE_DATE       DATE                        DEFAULT SYSDATE,
+  UPDATE_USER       VARCHAR2(15 CHAR),
+  UPDATE_DEVICE     VARCHAR2(50 CHAR),
+  VER               NUMBER(10)                  DEFAULT 1
+)
+TABLESPACE DATA1

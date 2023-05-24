@@ -1,0 +1,26 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="text-align: center; padding: 100px 0;">
+    <h1 style="font-size: 50px;">Oops, something went wrong.</h1>
+    <h3 style="font-size: 30px;">We're sorry for the inconvenience. We'll work to resolve it as soon as possible. If you'd like to help us improve our service, please contact us with this pages screenshot.</h3>
+    <p style="font-size: 20px; margin-top: 30px;">
+        @if (Model != null)
+            {
+        <p class="text-danger">@Model.Exception.Message</p>
+        }
+        else
+        {
+            <h4 class="text-danger">An unknown error occurred while processing your request.</h4>
+        }
+        @{
+            var errUrl = Url.RouteUrl(ViewContext.RouteData.Values);
+            <p><strong>an error stuck at this URL: @errUrl</strong></p>
+        }
+        </p>
+        <a href="/" style="font-size: 20px; margin-top: 30px; display: inline-block; padding: 10px 20px; background-color: lightgray; border-radius: 5px; text-decoration: none;">Go back to Home</a>
+    </div>

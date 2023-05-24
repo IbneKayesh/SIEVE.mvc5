@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="procurement, procurement management system, auction, auction website, online procurement, vendor procurement, procurement software, procurement software Bangladesh,purchasing software, RFQ, RFP, RFI, RFx, Auction, Bid, SCM, Rate Collection, SIEVE, PRAN SCM, RFL SCM, PRG SCM">
+    <meta name="description" content="RFQ 2.0 is a smart procurement software that helps PRAN RFL Group SCM and their sister concern companies take control of their procurement operations with efficiency and transparency.">
+    <meta property="og:title" content="Easy Procurement | RFQ 2.0">
+    <meta property="og:description" content="RFQ 2.0 is a smart procurement software that helps PRAN RFL Group SCM and their sister concern companies take control of their procurement operations with efficiency and transparency.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://rfq.prangroup.com/">
+
+    <title>@ViewBag.Title | RFQ 2.0</title>
+    <link href="~/App_Assets/img/rfq_logo.png" rel="shortcut icon" type="image/x-icon" />
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/App_Assets/plugins/fontawesome-free/css/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="~/App_Assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="~/App_Assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/App_Assets/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition login-page">
+
+    @RenderBody()
+
+    <!-- jQuery -->
+    <script src="~/App_Assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/App_Assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/App_Assets/dist/js/adminlte.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="~/App_Assets/plugins/sweetalert2/sweetalert2.min.js"></script>
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        //Sweet Alert
+        @Html.Raw(TempData["msg"])
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+﻿@model SIEVE.Infrastructure.Models.OPD.OPD_PATIENT
+    @{
+        ViewBag.Title = "Create Patient";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title">Create a new Patient</h3>
+            <div class="card-tools">
+                <a href="@Url.Action("Index","Patient", new { Area ="OPD"})" class="btn btn-outline-info btn-flat btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>
+                <a href="@Url.Action("Create","Patient", new { Area ="OPD", id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> New</a>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(x => x.ID)
+                <div class="row">
+                    <div class="col-md-2 col-sm-12">
+                        @Html.LabelFor(model => model.PAT_ID, htmlAttributes: new { @class = "control-label" })<i class="text-danger">*</i>
+                        @Html.EditorFor(model => model.PAT_ID, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.PAT_ID) } })
+                        @Html.ValidationMessageFor(model => model.PAT_ID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-2 col-sm-12">
+                        @Html.LabelFor(model => model.MOBILE_NO, htmlAttributes: new { @class = "control-label" })<i class="text-danger">*</i>
+                        @Html.EditorFor(model => model.MOBILE_NO, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.MOBILE_NO) } })
+                        @Html.ValidationMessageFor(model => model.MOBILE_NO, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-2 col-sm-12">
+                        @Html.LabelFor(model => model.PAT_NAME, htmlAttributes: new { @class = "control-label" })<i class="text-danger">*</i>
+                        @Html.EditorFor(model => model.PAT_NAME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.PAT_NAME) } })
+                        @Html.ValidationMessageFor(model => model.PAT_NAME, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group float-right mt-2">
+                            <button type="submit" class="btn btn-success btn-flat btn-sm"><i class="fas fa-save"></i> Save</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- /.card-body -->
+    </div>
