@@ -22,11 +22,6 @@ namespace SIEVE.Infrastructure.Services.OPD
 
             return executor.Query<T>(sql, inParams);
         }
-        //public EQResultClass<T> GetAll<T>()
-        //{
-        //    string sql = @"SELECT * FROM OPD_PATIENT WHERE IS_ACTIVE=1";
-        //    return executor.Query<T>(sql, new List<object>());
-        //}
         public EQResultClass<T> GetLike<T>(string MOBILE_NO, string PAT_NAME)
         {
             var criteria = new List<string>();
@@ -54,12 +49,12 @@ namespace SIEVE.Infrastructure.Services.OPD
             {
                 new SqlParameter("@ID", id),
                 new SqlParameter("@CREATE_USER", UserId),
-                new SqlParameter("@PAT_ID", (object)obj.PAT_ID ?? DBNull.Value),
+                new SqlParameter("@PAT_NO", (object)obj.PAT_NO ?? DBNull.Value),
                 new SqlParameter("@MOBILE_NO", (object)obj.MOBILE_NO ?? DBNull.Value),
                 new SqlParameter("@PAT_NAME", (object)obj.PAT_NAME ?? DBNull.Value)
             };
 
-            string sql = @"INSERT INTO OPD_PATIENT (ID, PAT_ID, MOBILE_NO, PAT_NAME, CREATE_USER)VALUES (@ID, @PAT_ID, @MOBILE_NO, @PAT_NAME, @CREATE_USER)";
+            string sql = @"INSERT INTO OPD_PATIENT (ID, PAT_ID, MOBILE_NO, PAT_NAME, CREATE_USER)VALUES (@ID, @PAT_NO, @MOBILE_NO, @PAT_NAME, @CREATE_USER)";
             return executor.SaveChanges(sql, inParams);
         }
 

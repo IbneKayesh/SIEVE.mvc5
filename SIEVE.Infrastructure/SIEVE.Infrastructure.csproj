@@ -58,6 +58,7 @@
     <Compile Include="Services\AA\MenuService.cs" />
     <Compile Include="Services\AlertService.cs" />
     <Compile Include="Services\dalCommon.cs" />
+    <Compile Include="Services\OPD\BillMasterService.cs" />
     <Compile Include="Services\OPD\PatientService.cs" />
     <Compile Include="Services\PSM\InvesCategoryService.cs" />
   </ItemGroup>

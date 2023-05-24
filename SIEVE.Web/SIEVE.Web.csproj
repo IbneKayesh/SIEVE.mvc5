@@ -195,8 +195,6 @@
     <Folder Include="Areas\AA\Controllers\" />
     <Folder Include="Areas\AA\Models\" />
     <Folder Include="Areas\AA\Views\Shared\" />
-    <Folder Include="Areas\OPD\Views\BillService\" />
-    <Folder Include="Areas\OPD\Views\PatientBill\" />
     <Folder Include="Areas\OPD\Views\Shared\" />
     <Folder Include="Areas\PSM\Views\Shared\" />
     <Folder Include="Views\Error\" />
@@ -210,6 +208,8 @@
     <Content Include="Areas\OPD\Views\web.config" />
     <Content Include="Areas\OPD\Views\Patient\Index.cshtml" />
     <Content Include="Areas\OPD\Views\Patient\Create.cshtml" />
+    <Content Include="Areas\OPD\Views\PatientBill\AddBillService.cshtml" />
+    <Content Include="Areas\OPD\Views\PatientBill\Index.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\InternalServerError.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />

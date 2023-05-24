@@ -4,8 +4,12 @@ namespace SIEVE.Infrastructure.Models.OPD
 {
     public class OPD_PATIENT
     {
+        public OPD_PATIENT()
+        {
+            PAT_NO = "0";
+        }
         public string ID { get; set; }
-        public string PAT_ID { get; set; }
+        public string PAT_NO { get; set; }
         public string MOBILE_NO { get; set; }
         public string PAT_NAME { get; set; }
         public string PAT_BONDING { get; set; }

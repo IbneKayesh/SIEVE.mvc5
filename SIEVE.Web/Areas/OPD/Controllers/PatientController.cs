@@ -12,7 +12,6 @@ namespace SIEVE.Web.Areas.OPD.Controllers
 {
     public class PatientController : Controller
     {
-
         private string UserId;
         private readonly PatientService patientService = new PatientService();
         public PatientController()

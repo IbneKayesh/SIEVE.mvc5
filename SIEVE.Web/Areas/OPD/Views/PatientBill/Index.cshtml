@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SIEVE.Infrastructure.Models.OPD.OPD_BILL_MASTER>
+
+@{
+    ViewBag.Title = "Ongoing Bill Service";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card card-primary card-outline">
+    <div class="card-header">
+        <h3 class="card-title">Find your Ongoing Bill Service</h3>
+        <div class="card-tools">
+            <a href="@Url.Action("Create","Patient", new { Area ="OPD", id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> Add @ViewBag.Title</a>
+        </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-body">
+        <div class="h-auto d-inline-block table-responsive">
+            <table id="example1" class="table table-sm table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.DEPT_NAME</td>
+                            <td>@item.BILL_DATE</td>
+                            <td>@item.PAT_NAME</td>
+                            <td class="text-right">
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="#">
+                                        <a href="@Url.Action("AddBillService","PatientBill", new { Area ="OPD", id=@item.ID})" class="dropdown-item btn btn-outline-danger btn-flat btn-sm"><i class="fas fa-edit"></i> Add More Service</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

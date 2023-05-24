@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SIEVE.Infrastructure.Models.OPD
 {
     public class OPD_BILL_DETAIL
     {
-        public string LINE_ID { get; set; }
         public string BILL_MASTER_ID { get; set; }
         public string SALE_DEPT_ID { get; set; }
         public DateTime SALE_DATE { get; set; }
@@ -23,5 +18,6 @@ namespace SIEVE.Infrastructure.Models.OPD
         public string DOCT_ID { get; set; }
         public string DOCT_NAME { get; set; }
         public string ROOM_NAME { get; set; }
+        public int IS_PAY { get; set; } = 0;
     }
 }
