@@ -50,11 +50,25 @@ namespace SIEVE.Infrastructure.Services.OPD
                 new SqlParameter("@ID", id),
                 new SqlParameter("@CREATE_USER", UserId),
                 new SqlParameter("@PAT_NO", (object)obj.PAT_NO ?? DBNull.Value),
-                new SqlParameter("@MOBILE_NO", (object)obj.MOBILE_NO ?? DBNull.Value),
-                new SqlParameter("@PAT_NAME", (object)obj.PAT_NAME ?? DBNull.Value)
+                new SqlParameter("@PAT_NAME",obj.PAT_NAME),
+                new SqlParameter("@PAT_BONDING",obj.PAT_BONDING),
+                new SqlParameter("@GENDER_ID",obj.GENDER_ID),
+                new SqlParameter("@DATE_OF_BIRTH",(object)obj.DATE_OF_BIRTH ?? DBNull.Value),
+                new SqlParameter("@PAT_ADDRESS_1",(object)obj.PAT_ADDRESS_1 ?? DBNull.Value),
+                new SqlParameter("@PAT_ADDRESS_2",(object)obj.PAT_ADDRESS_2 ?? DBNull.Value),
+                new SqlParameter("@MOBILE_NUMBER_1",(object)obj.MOBILE_NUMBER_1 ?? DBNull.Value),
+                new SqlParameter("@MOBILE_NUMBER_2",(object)obj.MOBILE_NUMBER_2 ?? DBNull.Value),
+                new SqlParameter("@EMAIL_ADDRESS_1",(object)obj.EMAIL_ADDRESS_1 ?? DBNull.Value),
+                new SqlParameter("@EMAIL_ADDRESS_2",(object)obj.EMAIL_ADDRESS_2 ?? DBNull.Value),
+                new SqlParameter("@BLOOD_GROUP",(object)obj.BLOOD_GROUP ?? DBNull.Value),
+                new SqlParameter("@RELIGION",(object)obj.RELIGION ?? DBNull.Value),
+                new SqlParameter("@RELATIONSHIP",(object)obj.RELATIONSHIP ?? DBNull.Value),
+                new SqlParameter("@GUARDIAN_NAME",(object)obj.GUARDIAN_NAME ?? DBNull.Value),
+                new SqlParameter("@GUARDIAN_MOBILE",(object)obj.GUARDIAN_MOBILE ?? DBNull.Value),
+                new SqlParameter("@RELATION_WITH_GUARDIAN",(object)obj.RELATION_WITH_GUARDIAN ?? DBNull.Value),
+                new SqlParameter("@DEPT_ID",(object)obj.DEPT_ID ?? DBNull.Value)
             };
-
-            string sql = @"INSERT INTO OPD_PATIENT (ID, PAT_ID, MOBILE_NO, PAT_NAME, CREATE_USER)VALUES (@ID, @PAT_NO, @MOBILE_NO, @PAT_NAME, @CREATE_USER)";
+            string sql = @"INSERT INTO OPD_PATIENT(ID,PAT_NO,PAT_NAME,PAT_BONDING,GENDER_ID,DATE_OF_BIRTH,PAT_ADDRESS_1,PAT_ADDRESS_2,MOBILE_NUMBER_1,MOBILE_NUMBER_2,EMAIL_ADDRESS_1,EMAIL_ADDRESS_2,BLOOD_GROUP,RELIGION,RELATIONSHIP,GUARDIAN_NAME,GUARDIAN_MOBILE,RELATION_WITH_GUARDIAN,DEPT_ID,CREATE_USER)VALUES(@ID,@PAT_NO,@PAT_NAME,@PAT_BONDING,@GENDER_ID,@DATE_OF_BIRTH,@PAT_ADDRESS_1,@PAT_ADDRESS_2,@MOBILE_NUMBER_1,@MOBILE_NUMBER_2,@EMAIL_ADDRESS_1,@EMAIL_ADDRESS_2,@BLOOD_GROUP,@RELIGION,@RELATIONSHIP,@GUARDIAN_NAME,@GUARDIAN_MOBILE,@RELATION_WITH_GUARDIAN,@DEPT_ID,@CREATE_USER)";
             return executor.SaveChanges(sql, inParams);
         }
 

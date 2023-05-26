@@ -48,7 +48,7 @@
     <Compile Include="Models\OPD\OPD_BILL_PAY_STAFF.cs" />
     <Compile Include="Models\OPD\OPD_PATIENT.cs" />
     <Compile Include="Models\PSM\PSM_CENTER.cs" />
-    <Compile Include="Models\PSM\PSM_DEPARTMENT.cs" />
+    <Compile Include="Models\PSM\PSM_DEPT.cs" />
     <Compile Include="Models\PSM\PSM_DEPT_CATEGORY.cs" />
     <Compile Include="Models\PSM\PSM_DEPT_INVES.cs" />
     <Compile Include="Models\PSM\PSM_INVESTIGATION.cs" />
@@ -60,6 +60,7 @@
     <Compile Include="Services\dalCommon.cs" />
     <Compile Include="Services\OPD\BillMasterService.cs" />
     <Compile Include="Services\OPD\PatientService.cs" />
+    <Compile Include="Services\PSM\DeptService.cs" />
     <Compile Include="Services\PSM\InvesCategoryService.cs" />
   </ItemGroup>
   <ItemGroup>

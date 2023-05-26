@@ -8,7 +8,7 @@ namespace SIEVE.Web.Areas.OPD.Models
     {
 
         [Display(Name = "Mobile")]
-        public string MOBILE_NO { get; set; }
+        public string MOBILE_NUMBER_1 { get; set; }
 
         [Display(Name = "Patient Name")]
         public string PAT_NAME { get; set; }

@@ -85,6 +85,20 @@ namespace SIEVE.Live.Mssql
                     .Select(c => c.ColumnName)
                     .ToList();
             var properties = typeof(T).GetProperties();
+            //return dt.AsEnumerable().Select(row =>
+            //{
+            //    var objT = Activator.CreateInstance<T>();
+            //    foreach (var pro in properties)
+            //    {
+            //        if (columnNames.Contains(pro.Name))
+            //        {
+            //            PropertyInfo pI = objT.GetType().GetProperty(pro.Name);
+            //            pro.SetValue(objT, row[pro.Name] == DBNull.Value ? null : Convert.ChangeType(row[pro.Name], pI.PropertyType));
+            //        }
+            //    }
+            //    return objT;
+            //}).ToList();
+
             return dt.AsEnumerable().Select(row =>
             {
                 var objT = Activator.CreateInstance<T>();
@@ -93,7 +107,17 @@ namespace SIEVE.Live.Mssql
                     if (columnNames.Contains(pro.Name))
                     {
                         PropertyInfo pI = objT.GetType().GetProperty(pro.Name);
-                        pro.SetValue(objT, row[pro.Name] == DBNull.Value ? null : Convert.ChangeType(row[pro.Name], pI.PropertyType));
+                        var value = row[pro.Name];
+                        if (value == DBNull.Value)
+                        {
+                            pro.SetValue(objT, null);  // Assign null to nullable types
+                        }
+                        else
+                        {
+                            Type propertyType = pI.PropertyType;
+                            propertyType = Nullable.GetUnderlyingType(propertyType) ?? propertyType;  // Get the underlying type if propertyType is nullable
+                            pro.SetValue(objT, Convert.ChangeType(value, propertyType));
+                        }
                     }
                 }
                 return objT;

@@ -19,9 +19,9 @@
                 @Html.AntiForgeryToken()
                 <div class="row">
                     <div class="col-md-3 col-sm-12">
-                        @Html.LabelFor(model => model.MOBILE_NO, htmlAttributes: new { @class = "control-label" })<i class="text-danger">*</i>
-                        @Html.EditorFor(model => model.MOBILE_NO, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.MOBILE_NO) } })
-                        @Html.ValidationMessageFor(model => model.MOBILE_NO, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.MOBILE_NUMBER_1, htmlAttributes: new { @class = "control-label" })<i class="text-danger">*</i>
+                        @Html.EditorFor(model => model.MOBILE_NUMBER_1, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.MOBILE_NUMBER_1) } })
+                        @Html.ValidationMessageFor(model => model.MOBILE_NUMBER_1, "", new { @class = "text-danger" })
                     </div>
                     <div class="col-md-3 col-sm-12">
                         @Html.LabelFor(model => model.PAT_NAME, htmlAttributes: new { @class = "control-label" })<i class="text-danger">*</i>
@@ -47,8 +47,14 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Mobile</th>
                                 <th>Name</th>
+                                <th>For</th>
+                                <th>Gender</th>
+                                <th>Date of Birth</th>
+                                <th>Address</th>
+                                <th>Mobile</th>
+                                <th>Email</th>
+                                <th>Blood Group</th>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -56,9 +62,15 @@
                             @foreach (var item in Model.OPD_PATIENT)
                             {
                                 <tr>
-                                    <td>@item.ID</td>
-                                    <td>@item.MOBILE_NO</td>
+                                    <td>@item.PAT_NO</td>
                                     <td>@item.PAT_NAME</td>
+                                    <td>@item.PAT_BONDING</td>
+                                    <td>@item.GENDER_ID</td>
+                                    <td>@item.DATE_OF_BIRTH</td>
+                                    <td>@item.PAT_ADDRESS_1</td>
+                                    <td>@item.MOBILE_NUMBER_1</td>
+                                    <td>@item.EMAIL_ADDRESS_1</td>
+                                    <td>@item.BLOOD_GROUP</td>
                                     <td class="text-right">
                                         <div class="dropdown">
                                             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

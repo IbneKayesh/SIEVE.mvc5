@@ -159,6 +159,7 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SessionHelper.cs" />
+    <Compile Include="Extension\SelectListService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -210,6 +211,7 @@
     <Content Include="Areas\OPD\Views\Patient\Create.cshtml" />
     <Content Include="Areas\OPD\Views\PatientBill\AddBillService.cshtml" />
     <Content Include="Areas\OPD\Views\PatientBill\Index.cshtml" />
+    <Content Include="Areas\OPD\Views\PatientBill\NewBillService.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\InternalServerError.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />

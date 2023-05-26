@@ -4,6 +4,7 @@ using SIEVE.Infrastructure.Services.OPD;
 using SIEVE.Live.Database;
 using SIEVE.Web.Areas.OPD.Models;
 using SIEVE.Web.Controllers;
+using SIEVE.Web.Extension;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -29,7 +30,7 @@ namespace SIEVE.Web.Areas.OPD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Index(OPD_PATIENT_VM Obj)
         {
-            EQResultClass<OPD_PATIENT> ObjList = patientService.GetLike<OPD_PATIENT>(Obj.MOBILE_NO,Obj.PAT_NAME);
+            EQResultClass<OPD_PATIENT> ObjList = patientService.GetLike<OPD_PATIENT>(Obj.MOBILE_NUMBER_1, Obj.PAT_NAME);
             Obj.OPD_PATIENT = ObjList.Entity;
             return View(Obj);
         }
@@ -48,6 +49,7 @@ namespace SIEVE.Web.Areas.OPD.Controllers
                     ModelState.AddModelError(string.Empty, "No Patient Info was found with your selection criteria");
                 }
             }
+            Dropdown_Create();
             return View(Obj);
         }
 
@@ -67,7 +69,15 @@ namespace SIEVE.Web.Areas.OPD.Controllers
                     ModelState.AddModelError(string.Empty, dbObj.MESSAGES);
                 }
             }
+            Dropdown_Create();
             return View(Obj);
+        }
+        private void Dropdown_Create()
+        {
+            ViewBag.PAT_BONDING = SelectListService.GetBonding();
+            ViewBag.GENDER_ID = SelectListService.GetGender();
+            ViewBag.BLOOD_GROUP= SelectListService.GetBloodGroup();
+            ViewBag.RELIGION = SelectListService.GetReligion();
         }
     }
 }

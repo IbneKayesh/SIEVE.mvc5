@@ -9,7 +9,8 @@
     <div class="card-header">
         <h3 class="card-title">Find your Ongoing Bill Service</h3>
         <div class="card-tools">
-            <a href="@Url.Action("Create","Patient", new { Area ="OPD", id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> Add @ViewBag.Title</a>
+            <a href="@Url.Action("NewBillService","PatientBill", new { Area ="OPD", id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> Add New Bill</a>
+            <a href="@Url.Action("AddBillService","PatientBill", new { Area ="OPD", id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> Add New Service</a>
         </div>
     </div>
     <!-- /.card-body -->

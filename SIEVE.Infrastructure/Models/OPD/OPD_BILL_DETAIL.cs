@@ -15,6 +15,7 @@ namespace SIEVE.Infrastructure.Models.OPD
         public decimal DISC_PCT { get; set; }
         public decimal DISC_AMT { get; set; }
         public string REFERRAL_ID { get; set; }
+        public string REFERRAL_NAME { get; set; }
         public string DOCT_ID { get; set; }
         public string DOCT_NAME { get; set; }
         public string ROOM_NAME { get; set; }

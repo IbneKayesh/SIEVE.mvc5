@@ -1,6 +1,6 @@
 ﻿namespace SIEVE.Infrastructure.Models.PSM
 {
-    public class PSM_DEPARTMENT
+    public class PSM_DEPT
     {
         public string ID { get; set; }
         public string DEPT_NAME { get; set; }
