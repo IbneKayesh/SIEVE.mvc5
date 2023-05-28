@@ -9,9 +9,11 @@ namespace SIEVE.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private MenuService menuService = new MenuService();
         public ActionResult Index()
         {
+            Session["UserId"] = "KAYESH";
+            Session["CenterId"] = "10";
+            
             SideBar();
             return View();
         }
@@ -31,8 +33,7 @@ namespace SIEVE.Web.Controllers
             }
             else
             {
-                //EQResultClass<APP_MENU> dbObj = menuService.getByRoleId<APP_MENU>(Session["uRole"].ToString());
-                EQResultClass<APP_MENU> dbObj = menuService.getByRoleId<APP_MENU>("ADMIN");
+                EQResultClass<APP_MENU> dbObj = MenuService.getByRoleId<APP_MENU>("ADMIN");
                 if (dbObj.Result.SUCCESS && dbObj.Result.ROWS > 0)
                 {
                     objList = dbObj.Entity;

@@ -8,10 +8,11 @@ using System.Data.SqlClient;
 
 namespace SIEVE.Infrastructure.Services.PSM
 {
-    public class DeptService
+    public class DoctService
     {
-        private static IDatabaseExecutor executor = new Execute();
+       private static IDatabaseExecutor executor = new Execute();
         dalCommon dalC = new dalCommon(new Execute());
+      
         public EQResultClass<T> GetById<T>(string Id)
         {
             string sql = @"SELECT * FROM PSM_DEPT WHERE ID=@ID";
@@ -22,37 +23,18 @@ namespace SIEVE.Infrastructure.Services.PSM
 
             return executor.Query<T>(sql, inParams);
         }
-        public static EQResultClass<T> GetBillDeptByUserId<T>(string UserId)
+        public static EQResultClass<T> GetAllByCenterId<T>(string CenterId)
         {
             List<object> inParams = new List<object>()
             {
-                 new OracleParameter(parameterName: "USER_ID", type: OracleDbType.Varchar2, obj: UserId, direction: ParameterDirection.Input)
+                 new OracleParameter(parameterName: "CENTER_ID", type: OracleDbType.Varchar2, obj: CenterId, direction: ParameterDirection.Input)
             };
-            string sql = @"SELECT DPT.*
-                            FROM PSM_DEPT DPT
-                            JOIN PSM_USER_DEPT UDPT ON DPT.DEPT_ID=UDPT.DEPT_ID AND UDPT.IS_ACTIVE=1 
-                            WHERE DPT.IS_ACTIVE=1
-                            AND DPT.CAT_ID=10
-                            AND UDPT.USER_ID=:USER_ID";
+            string sql = @"SELECT D.* 
+            FROM PSM_DOCT D
+            JOIN PSM_DOCT_CENT DC ON D.DOCT_ID=DC.DOCT_ID AND DC.IS_ACTIVE=1
+            WHERE D.IS_ACTIVE=1
+            AND DC.CENTER_ID=:CENTER_ID";
             return executor.Query<T>(sql, inParams);
-        }
-        public static EQResultClass<T> GetSaleDeptByUserId<T>(string UserId)
-        {
-            List<object> inParams = new List<object>()
-            {
-                 new OracleParameter(parameterName: "USER_ID", type: OracleDbType.Varchar2, obj: UserId, direction: ParameterDirection.Input)
-            };
-            string sql = @"SELECT DPT.*
-                            FROM PSM_DEPT DPT
-                            JOIN PSM_USER_DEPT UDPT ON DPT.DEPT_ID=UDPT.DEPT_ID AND UDPT.IS_ACTIVE=1 
-                            WHERE DPT.IS_ACTIVE=1
-                            AND UDPT.USER_ID=:USER_ID";
-            return executor.Query<T>(sql, inParams);
-        }
-        public EQResultClass<T> GetAll<T>()
-        {
-            string sql = @"SELECT * FROM PSM_DEPT WHERE IS_ACTIVE=1";
-            return executor.Query<T>(sql, new List<object>());
         }
         public EQResultClass<T> GetLikeName<T>(string Name)
         {

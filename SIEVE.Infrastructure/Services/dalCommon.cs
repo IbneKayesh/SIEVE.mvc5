@@ -1,5 +1,5 @@
 ﻿using SIEVE.Live.Database;
-using SIEVE.Live.Mssql;
+using SIEVE.Live.Oracle;
 using System;
 
 namespace SIEVE.Infrastructure.Services
@@ -25,10 +25,10 @@ namespace SIEVE.Infrastructure.Services
         public string NextTableMaxToNumber(string idColumn, string tableName)
         {
             //Msssql
-            sql = $"select max({idColumn})max_id from {tableName}";
+            //sql = $"select max({idColumn})max_id from {tableName}";
 
             //Oracle
-            //sql = $"select max(to_number({idColumn}))max_id from {tableName}";
+            sql = $"select max(to_number({idColumn}))max_id from {tableName}";
 
             EQResultTable_v1 obj = executor.Query(sql, new System.Collections.Generic.List<object>());
             if (obj.Result.ROWS == 1)

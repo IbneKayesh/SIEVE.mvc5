@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SIEVE.Infrastructure.Models.OPD
 {
@@ -11,10 +12,30 @@ namespace SIEVE.Infrastructure.Models.OPD
             OPD_BILL_DETAIL = new List<OPD_BILL_DETAIL>();
             BILL_DATE = DateTime.Now;
         }
-        public string ID { get; set; }
+        public string BM_ID { get; set; }
+
+        [Display(Name = "Bill To")]
+        [Required(ErrorMessage = "{0} is required")]
         public string BILL_DEPT_ID { get; set; }
+
+        [Display(Name = "Sale To")]
+        [Required(ErrorMessage = "{0} is required")]
+        [NotMapped]
+        public string SALE_DEPT_ID { get; set; }
+
+        [NotMapped]
         public string DEPT_NAME { get; set; }
+
+        [Display(Name = "Discount Type")]
+        [Required(ErrorMessage = "{0} is required")]
+        public string DISC_TYPE { get; set; }
+
+
+        [Display(Name = "Bill Date")]
         public DateTime BILL_DATE { get; set; }
+
+        [Display(Name = "Patient Id")]
+        [Required(ErrorMessage = "{0} is required")]
         public string PAT_ID { get; set; }
 
         [Display(Name = "Patient Name")]
@@ -43,6 +64,22 @@ namespace SIEVE.Infrastructure.Models.OPD
         [Display(Name = "Note")]
         [StringLength(maximumLength: 50, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 0)]
         public string SALE_NOTE { get; set; }
+
+
+
+
+        [Display(Name = "Staff Id")]
+        //[Required(ErrorMessage = "{0} is required")]
+        public string STAFF_ID { get; set; }
+
+        [Display(Name = "Staff Name")]
+        //[Required(ErrorMessage = "{0} is required")]
+        public string STAFF_NAME { get; set; }
+
+        [Display(Name = "Card No")]
+        //[Required(ErrorMessage = "{0} is required")]
+        public string STAFF_CARD { get; set; }
+
         /// <summary>
         /// 0 Due, 1 Cash, 2 Credit
         /// </summary>

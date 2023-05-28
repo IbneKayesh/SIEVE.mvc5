@@ -7,14 +7,11 @@ namespace SIEVE.Infrastructure.Models.OPD
     {
         public OPD_PATIENT()
         {
-            ID = "0";
-            PAT_NO = "0";
+            PAT_ID = "0";
         }
-        public string ID { get; set; }
-
         [Display(Name = "Patient Id")]
         [StringLength(maximumLength: 50, ErrorMessage = "{0} length is between {2} and {1}", MinimumLength = 0)]
-        public string PAT_NO { get; set; }
+        public string PAT_ID { get; set; }
 
         [Display(Name = "Patient Name")]
         [Required(ErrorMessage = "{0} is required")]

@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.19.18.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -44,22 +48,31 @@
   <ItemGroup>
     <Compile Include="Models\OPD\OPD_BILL_DETAIL.cs" />
     <Compile Include="Models\OPD\OPD_BILL_MASTER.cs" />
+    <Compile Include="Models\OPD\OPD_BILL_PAY_DETAIL.cs" />
     <Compile Include="Models\OPD\OPD_BILL_PAY_MASTER.cs" />
     <Compile Include="Models\OPD\OPD_BILL_PAY_STAFF.cs" />
     <Compile Include="Models\OPD\OPD_PATIENT.cs" />
     <Compile Include="Models\PSM\PSM_CENTER.cs" />
     <Compile Include="Models\PSM\PSM_DEPT.cs" />
-    <Compile Include="Models\PSM\PSM_DEPT_CATEGORY.cs" />
+    <Compile Include="Models\PSM\PSM_DEPT_CAT.cs" />
     <Compile Include="Models\PSM\PSM_DEPT_INVES.cs" />
-    <Compile Include="Models\PSM\PSM_INVESTIGATION.cs" />
-    <Compile Include="Models\PSM\PSM_INVES_CATEGORY.cs" />
-    <Compile Include="Models\PSM\PSM_SAMPLES.cs" />
+    <Compile Include="Models\PSM\PSM_DOCT.cs" />
+    <Compile Include="Models\PSM\PSM_INVES.cs" />
+    <Compile Include="Models\PSM\PSM_INVES_CAT.cs" />
+    <Compile Include="Models\PSM\PSM_INVES_DISC.cs" />
+    <Compile Include="Models\PSM\PSM_REFERRAL.cs" />
+    <Compile Include="Models\PSM\PSM_SAMPLE.cs" />
+    <Compile Include="Models\TABLE_COMMON.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AA\MenuService.cs" />
     <Compile Include="Services\AlertService.cs" />
     <Compile Include="Services\dalCommon.cs" />
     <Compile Include="Services\OPD\BillMasterService.cs" />
     <Compile Include="Services\OPD\PatientService.cs" />
+    <Compile Include="Services\PSM\DeptInvesService.cs" />
+    <Compile Include="Services\PSM\DoctService.cs" />
+    <Compile Include="Services\PSM\ReferralService.cs" />
+    <Compile Include="Services\PSM\InvesService.cs" />
     <Compile Include="Services\PSM\DeptService.cs" />
     <Compile Include="Services\PSM\InvesCategoryService.cs" />
   </ItemGroup>
@@ -74,6 +87,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\AA\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -9,55 +9,51 @@ using System.Web.Mvc;
 
 namespace SIEVE.Web.Areas.PSM.Controllers
 {
-    public class InvestigationCategoryController : Controller
+    public class InvestigationController : Controller
     {
+
         private string UserId;
-        public InvestigationCategoryController()
+        public InvestigationController()
         {
             UserId = SessionHelper.GetByKey();
         }
         public ActionResult Index()
         {
-            var Obj = new PSM_INVES_CATEGORY_VM();
-            EQResultClass<PSM_INVES_CAT> ObjList = InvesCategoryService.GetAll<PSM_INVES_CAT>();
-            Obj.PSM_INVES_CATEGORY = ObjList.Entity;
+            var Obj = new PSM_INVES_VM();          
+            EQResultClass<PSM_INVES> ObjList = InvesService.GetAll<PSM_INVES>();
+            Obj.PSM_INVES = ObjList.Entity;
             return View(Obj);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Index(PSM_INVES_CATEGORY_VM Obj)
-        {
-            EQResultClass<PSM_INVES_CAT> ObjList = InvesCategoryService.GetLikeName<PSM_INVES_CAT>(Obj.CAT_NAME);
-            Obj.PSM_INVES_CATEGORY = ObjList.Entity;
-            return View(Obj);
-        }
+
         public ActionResult Create(string id)
         {
-            PSM_INVES_CAT obj = new PSM_INVES_CAT();
+            Dropdown_Create();
+            PSM_INVES obj = new PSM_INVES();
             if (!string.IsNullOrWhiteSpace(id))
             {
-                EQResultClass<PSM_INVES_CAT> dbObj = InvesCategoryService.GetById<PSM_INVES_CAT>(id);
+                EQResultClass<PSM_INVES> dbObj = InvesService.GetById<PSM_INVES>(id);
                 if (dbObj.Result.SUCCESS && dbObj.Result.ROWS > 0)
                 {
                     obj = dbObj.Entity.First();
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "No Category Info was found with your selection criteria");
+                    ModelState.AddModelError(string.Empty, "No Info was found with your selection criteria");
                 }
             }
             return View(obj);
         }
 
         [HttpPost]
-        public ActionResult Create(PSM_INVES_CAT Obj)
+        public ActionResult Create(PSM_INVES Obj)
         {
+            Dropdown_Create();
             if (ModelState.IsValid)
             {
-                EQResult_v1 dbObj = InvesCategoryService.Update(Obj, UserId);
+                EQResult_v1 dbObj = InvesService.Update(Obj, UserId);
                 if (dbObj.SUCCESS && dbObj.ROWS > 0)
                 {
-                    TempData["msg"] = AlertService.SaveSuccess("Category Info is updated successfully");
+                    TempData["msg"] = AlertService.SaveSuccess("Information is updated successfully");
                     return RedirectToAction(nameof(Index));
                 }
                 else
@@ -67,5 +63,11 @@ namespace SIEVE.Web.Areas.PSM.Controllers
             }
             return View(Obj);
         }
+        private void Dropdown_Create()
+        {
+            EQResultClass<PSM_INVES_CAT> ObjList = InvesCategoryService.GetAll<PSM_INVES_CAT>();
+            ViewBag.CAT_ID = new SelectList(ObjList.Entity, "CAT_ID", "CAT_NAME");
+        }
+        
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SIEVE.Infrastructure.Models.OPD
 {
-    public class OPD_BILL_PAY_MASTER
+    public class OPD_BILL_PAY_DETAIL
     {
         public string PAY_ID { get; set; }
         public string BILL_MASTER_ID { get; set; }

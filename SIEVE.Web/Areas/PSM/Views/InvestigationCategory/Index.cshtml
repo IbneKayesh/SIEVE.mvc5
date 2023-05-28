@@ -19,9 +19,9 @@
             @Html.AntiForgeryToken()
             <div class="row">
                 <div class="col-md-3 col-sm-12">
-                    @Html.LabelFor(model => model.CATEGORY_NAME, htmlAttributes: new { @class = "control-label" })<i class="text-danger">*</i>
-                    @Html.EditorFor(model => model.CATEGORY_NAME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.CATEGORY_NAME) } })
-                    @Html.ValidationMessageFor(model => model.CATEGORY_NAME, "", new { @class = "text-danger" })
+                    @Html.LabelFor(model => model.CAT_NAME, htmlAttributes: new { @class = "control-label" })<i class="text-danger">*</i>
+                    @Html.EditorFor(model => model.CAT_NAME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.CAT_NAME) } })
+                    @Html.ValidationMessageFor(model => model.CAT_NAME, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="row">
@@ -50,15 +50,15 @@
                         @foreach (var item in Model.PSM_INVES_CATEGORY)
                         {
                             <tr>
-                                <td>@item.ID</td>
-                                <td>@item.CATEGORY_NAME</td>
+                                <td>@item.CAT_ID</td>
+                                <td>@item.CAT_NAME</td>
                                 <td class="text-right">
                                     <div class="dropdown">
                                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Actions
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="#">
-                                            <a href="@Url.Action("Create","InvestigationCategory", new { Area ="PSM", id=@item.ID})" class="dropdown-item btn btn-outline-danger btn-flat btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                            <a href="@Url.Action("Create","InvestigationCategory", new { Area ="PSM", id=@item.CAT_ID})" class="dropdown-item btn btn-outline-danger btn-flat btn-sm"><i class="fas fa-edit"></i> Edit</a>
                                         </div>
                                     </div>
                                 </td>

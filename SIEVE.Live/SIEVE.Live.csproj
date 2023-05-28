@@ -54,11 +54,10 @@
     <Compile Include="Database\IDatabaseExecutor.cs" />
     <Compile Include="Database\SQL_PLIST_v1.cs" />
     <Compile Include="Mssql\Execute.cs" />
+    <Compile Include="Oracle\Execute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Oracle\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Database\TestDb.bak" />

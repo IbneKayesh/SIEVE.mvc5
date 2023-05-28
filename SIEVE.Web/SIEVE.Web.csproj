@@ -152,8 +152,12 @@
     <Compile Include="Areas\OPD\Controllers\PatientBillController.cs" />
     <Compile Include="Areas\OPD\Controllers\PatientController.cs" />
     <Compile Include="Areas\OPD\Models\OPD_PATIENT_VM.cs" />
+    <Compile Include="Areas\OPD\Models\PSM_INVES_DISC_VM.cs" />
     <Compile Include="Areas\OPD\OPDAreaRegistration.cs" />
     <Compile Include="Areas\PSM\Controllers\InvestigationCategoryController.cs" />
+    <Compile Include="Areas\PSM\Controllers\InvestigationController.cs" />
+    <Compile Include="Areas\PSM\Controllers\ReferralController.cs" />
+    <Compile Include="Areas\PSM\Models\PSM_INVES_VM.cs" />
     <Compile Include="Areas\PSM\Models\PSM_INVES_CATEGORY_VM.cs" />
     <Compile Include="Areas\PSM\PSMAreaRegistration.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
@@ -197,6 +201,7 @@
     <Folder Include="Areas\AA\Models\" />
     <Folder Include="Areas\AA\Views\Shared\" />
     <Folder Include="Areas\OPD\Views\Shared\" />
+    <Folder Include="Areas\PSM\Views\Referral\" />
     <Folder Include="Areas\PSM\Views\Shared\" />
     <Folder Include="Views\Error\" />
   </ItemGroup>
@@ -212,6 +217,8 @@
     <Content Include="Areas\OPD\Views\PatientBill\AddBillService.cshtml" />
     <Content Include="Areas\OPD\Views\PatientBill\Index.cshtml" />
     <Content Include="Areas\OPD\Views\PatientBill\NewBillService.cshtml" />
+    <Content Include="Areas\PSM\Views\Investigation\Index.cshtml" />
+    <Content Include="Areas\PSM\Views\Investigation\Create.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\InternalServerError.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />

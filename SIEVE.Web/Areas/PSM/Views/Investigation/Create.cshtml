@@ -1,0 +1,61 @@
+﻿@model SIEVE.Infrastructure.Models.PSM.PSM_INVES
+    @{
+        ViewBag.Title = "Create Investigation";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title">Create a new Investigation</h3>
+            <div class="card-tools">
+                <a href="@Url.Action("Index","Investigation", new { Area ="PSM"})" class="btn btn-outline-info btn-flat btn-sm"><i class="fas fa-chevron-circle-left"></i> Back</a>
+                <a href="@Url.Action("Create","Investigation", new { Area ="PSM", id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> New</a>
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(x => x.INVES_ID)
+                <div class="row">
+                    <div class="col-md-3 col-sm-12">
+                        @Html.LabelFor(model => model.INVES_NAME, htmlAttributes: new { @class = "control-label" })<i class="text-danger">*</i>
+                        @Html.EditorFor(model => model.INVES_NAME, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.INVES_NAME) } })
+                        @Html.ValidationMessageFor(model => model.INVES_NAME, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                        @Html.LabelFor(model => model.INVES_DESC, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.INVES_DESC, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.INVES_DESC) } })
+                        @Html.ValidationMessageFor(model => model.INVES_DESC, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                        @Html.LabelFor(model => model.INVES_RATE, htmlAttributes: new { @class = "control-label" })<i class="text-danger">*</i>
+                        @Html.EditorFor(model => model.INVES_RATE, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.INVES_RATE) } })
+                        @Html.ValidationMessageFor(model => model.INVES_RATE, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-3 col-sm-12">
+                        @Html.LabelFor(model => model.CAT_ID, htmlAttributes: new { @class = "control-label" })<i class="text-danger">*</i>
+                        @Html.DropDownListFor(model => model.CAT_ID, null, "-select-", new { @class = "form-control form-control-sm" })
+                        @Html.ValidationMessageFor(model => model.CAT_ID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-12">
+                        @Html.LabelFor(model => model.HAS_SAMPLE, htmlAttributes: new { @class = "control-label" })<i class="text-danger">*</i>
+                        @Html.EditorFor(model => model.HAS_SAMPLE, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.HAS_SAMPLE) } })
+                        @Html.ValidationMessageFor(model => model.HAS_SAMPLE, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group float-right mt-2">
+                            <button type="submit" class="btn btn-success btn-flat btn-sm"><i class="fas fa-save"></i> Save</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- /.card-body -->
+    </div>

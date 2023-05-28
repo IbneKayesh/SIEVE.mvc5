@@ -1,0 +1,101 @@
+﻿@model SIEVE.Web.Areas.PSM.Models.PSM_INVES_VM
+
+@{
+    ViewBag.Title = "Investigation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card card-primary card-outline">
+    <div class="card-header">
+        <h3 class="card-title">Find your Investigation</h3>
+        <div class="card-tools">
+            <a href="@Url.Action("Create","Investigation", new { Area ="PSM", id=""})" class="btn btn-outline-primary btn-flat btn-sm"><i class="fas fa-plus-circle"></i> Add @ViewBag.Title</a>
+        </div>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-body">
+        @using (Html.BeginForm())
+            {
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    @Html.LabelFor(model => model.CAT_ID, htmlAttributes: new { @class = "control-label" })<i class="text-danger">*</i>
+                    @Html.EditorFor(model => model.CAT_ID, new { htmlAttributes = new { @class = "form-control form-control-sm", @Placeholder = Html.DisplayNameFor(x => x.CAT_ID) } })
+                    @Html.ValidationMessageFor(model => model.CAT_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group float-right mt-3">
+                        <button type="submit" class="btn btn-sm btn-flat btn-primary"><i class="fa fa-search"> Search</i></button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <!-- /.card-body -->
+    <div class="card-body">
+        @if (Model.PSM_INVES != null && Model.PSM_INVES.Count > 0)
+        {
+            <div class="h-auto d-inline-block table-responsive">
+                <table id="example1" class="table table-sm table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Common Rate</th>
+                            <th>Category</th>
+                            <th>Unit</th>
+                            <th>Has Sample</th>
+                            <th>#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.PSM_INVES)
+                        {
+                            <tr>
+                                <td>@item.INVES_ID</td>
+                                <td>@item.INVES_NAME</td>
+                                <td>@item.INVES_DESC</td>
+                                <td>@item.INVES_RATE</td>
+                                <td>@item.CAT_NAME</td>
+                                <td>
+                                    @if (item.UNIT_ID == "0")
+                                    {
+                                        <span>PCS</span>
+                                    }
+                                    else
+                                    {
+                                        <span>N/A</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.HAS_SAMPLE == 1)
+                                    {
+                                        <span class="badge badge-success">Yes</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-danger">No</span>
+                                    }
+                                </td>
+                                <td class="text-right">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Actions
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="#">
+                                            <a href="@Url.Action("Create", "Investigation", new { Area ="PSM", id=@item.INVES_ID})" class="dropdown-item btn btn-outline-danger btn-flat btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

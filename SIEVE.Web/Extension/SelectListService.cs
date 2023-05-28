@@ -50,5 +50,15 @@ namespace SIEVE.Web.Extension
                       }, "Value", "Text", 1);
             return DataList;
         }
+        public static SelectList GetDiscType()
+        {
+            SelectList DataList = new SelectList(
+                  new List<SelectListItem>
+                  {
+                    new SelectListItem { Text = "STAFF", Value ="STAFF"},
+                    new SelectListItem { Text = "OTHERS", Value ="OTHERS"}
+                      }, "Value", "Text", 1);
+            return DataList;
+        }
     }
 }

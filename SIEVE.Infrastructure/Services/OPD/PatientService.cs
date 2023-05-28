@@ -1,6 +1,6 @@
 ﻿using SIEVE.Infrastructure.Models.OPD;
 using SIEVE.Live.Database;
-using SIEVE.Live.Mssql;
+using SIEVE.Live.Oracle;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -49,7 +49,7 @@ namespace SIEVE.Infrastructure.Services.OPD
             {
                 new SqlParameter("@ID", id),
                 new SqlParameter("@CREATE_USER", UserId),
-                new SqlParameter("@PAT_NO", (object)obj.PAT_NO ?? DBNull.Value),
+                new SqlParameter("@PAT_NO", (object)obj.PAT_ID ?? DBNull.Value),
                 new SqlParameter("@PAT_NAME",obj.PAT_NAME),
                 new SqlParameter("@PAT_BONDING",obj.PAT_BONDING),
                 new SqlParameter("@GENDER_ID",obj.GENDER_ID),

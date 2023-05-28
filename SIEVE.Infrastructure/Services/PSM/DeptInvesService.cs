@@ -1,16 +1,14 @@
-﻿using Oracle.ManagedDataAccess.Client;
-using SIEVE.Infrastructure.Models.PSM;
+﻿using SIEVE.Infrastructure.Models.PSM;
 using SIEVE.Live.Database;
 using SIEVE.Live.Oracle;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace SIEVE.Infrastructure.Services.PSM
 {
-    public class DeptService
+    public class DeptInvesService
     {
-        private static IDatabaseExecutor executor = new Execute();
+        IDatabaseExecutor executor = new Execute();
         dalCommon dalC = new dalCommon(new Execute());
         public EQResultClass<T> GetById<T>(string Id)
         {
@@ -20,33 +18,6 @@ namespace SIEVE.Infrastructure.Services.PSM
                 new SqlParameter(parameterName: "@ID", value: Id)
             };
 
-            return executor.Query<T>(sql, inParams);
-        }
-        public static EQResultClass<T> GetBillDeptByUserId<T>(string UserId)
-        {
-            List<object> inParams = new List<object>()
-            {
-                 new OracleParameter(parameterName: "USER_ID", type: OracleDbType.Varchar2, obj: UserId, direction: ParameterDirection.Input)
-            };
-            string sql = @"SELECT DPT.*
-                            FROM PSM_DEPT DPT
-                            JOIN PSM_USER_DEPT UDPT ON DPT.DEPT_ID=UDPT.DEPT_ID AND UDPT.IS_ACTIVE=1 
-                            WHERE DPT.IS_ACTIVE=1
-                            AND DPT.CAT_ID=10
-                            AND UDPT.USER_ID=:USER_ID";
-            return executor.Query<T>(sql, inParams);
-        }
-        public static EQResultClass<T> GetSaleDeptByUserId<T>(string UserId)
-        {
-            List<object> inParams = new List<object>()
-            {
-                 new OracleParameter(parameterName: "USER_ID", type: OracleDbType.Varchar2, obj: UserId, direction: ParameterDirection.Input)
-            };
-            string sql = @"SELECT DPT.*
-                            FROM PSM_DEPT DPT
-                            JOIN PSM_USER_DEPT UDPT ON DPT.DEPT_ID=UDPT.DEPT_ID AND UDPT.IS_ACTIVE=1 
-                            WHERE DPT.IS_ACTIVE=1
-                            AND UDPT.USER_ID=:USER_ID";
             return executor.Query<T>(sql, inParams);
         }
         public EQResultClass<T> GetAll<T>()

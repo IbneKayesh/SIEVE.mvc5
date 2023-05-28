@@ -8,7 +8,7 @@ namespace SIEVE.Web.Areas.PSM.Models
     {
 
         [Display(Name = "Category Name")]
-        public string CATEGORY_NAME { get; set; }
-        public List<PSM_INVES_CATEGORY> PSM_INVES_CATEGORY { get; set; }
+        public string CAT_NAME { get; set; }
+        public List<PSM_INVES_CAT> PSM_INVES_CATEGORY { get; set; }
     }
 }
